@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-# CSRF_TRUSTED_ORIGINS = ['https://final-bandb-backend-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://intercerttest-production.up.railway.app']
 
 # CSRF_TRUSTED_ORIGINS =['*']
 # Application definition
@@ -124,6 +124,7 @@ USE_TZ = True
 
 CORS_ALLOWED_ORIGINS = ['http://localhost:4200']
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

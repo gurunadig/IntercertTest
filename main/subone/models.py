@@ -579,7 +579,7 @@ class GrcSecThreeList(models.Model):
 
 class GrcSecThree(models.Model):
     section_title = models.CharField(max_length=255)
-    desc = models.TextField()
+    desc = models.TextField(blank=True, null=True)
     grc_sec_three_list = models.ManyToManyField(GrcSecThreeList, related_name='grc_sec_three_list')
 
     def __str__(self):

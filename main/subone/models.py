@@ -1573,11 +1573,11 @@ class TrnMainPage(models.Model):
 # Contact Detail APi
 
 class ContactDetail(models.Model):
-    branch_name = models.CharField(max_length=255)
-    company_name = models.CharField(max_length=255)
-    address = models.TextField()
-    phone_number = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
+    branch_name = models.CharField(max_length=255, null=True, blank=True)
+    company_name = models.CharField(max_length=255, null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
+    phone_number = models.CharField(max_length=255, null=True, blank=True)
+    email = models.CharField(max_length=255, null=True, blank=True)
     location_map = models.TextField()
 
     def __str__(self):
@@ -2188,3 +2188,162 @@ class CustomerFeedbackForm(models.Model):
    
     def __str__(self):
         return self.company_name
+
+
+class CmgClientsMeta(models.Model):
+    title = models.TextField()
+    description = models.TextField()
+    keywords = models.TextField()
+    author = models.TextField()
+    robots = models.TextField()
+    googlebot = models.TextField()
+    language = models.TextField()
+    google_site_verification = models.TextField()
+    og_url = models.TextField()
+    og_type = models.TextField()
+    og_title = models.TextField()
+    og_desc = models.TextField()
+    og_image = models.ImageField(upload_to='og_images/')
+    twitter_card = models.TextField()
+    twitter_domain = models.TextField()
+    twitter_url = models.TextField()
+    twitter_title = models.TextField()
+    twitter_desc = models.TextField()
+    twitter_image = models.ImageField(upload_to='twitter_images/')
+ 
+    def __str__(self):
+        return self.title
+ 
+class CmgSecOneList(models.Model):
+    title = models.CharField(max_length=255)
+    desc = models.TextField()
+ 
+    def __str__(self):
+        return self.title
+ 
+class CmgSecOne(models.Model):
+    section_title = models.CharField(max_length=255)
+    desc = models.TextField()
+    cmg_sec_one_list = models.ManyToManyField(CmgSecOneList, related_name='cmg_sec_one_list', blank=True, null=True)
+ 
+    def __str__(self):
+        return self.section_title
+ 
+class CmgSecTwoList(models.Model):
+    title = models.CharField(max_length=255)
+    desc = models.TextField()
+ 
+    def __str__(self):
+        return self.title
+ 
+class CmgSecTwo(models.Model):
+    img = models.ImageField(upload_to='images/')
+    section_title = models.CharField(max_length=255)
+    desc = models.TextField(blank=True, null=True)
+    cmg_sec_two_list = models.ManyToManyField(CmgSecTwoList, related_name='cmg_sec_two_list', blank=True, null=True)
+ 
+    def __str__(self):
+        return self.section_title
+ 
+ 
+class CmgSecThreeList(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+    desc = models.TextField()
+ 
+    def __str__(self):
+        return self.desc[:30]
+ 
+class CmgSecThree(models.Model):
+    section_title = models.CharField(max_length=255)
+    desc = models.TextField(blank=True, null=True)
+    cmg_sec_three_list = models.ManyToManyField(CmgSecThreeList, related_name='cmg_sec_three_list')
+ 
+    def __str__(self):
+        return self.section_title
+ 
+ 
+class CmgSecFourList(models.Model):
+    use = models.TextField()
+    products = models.TextField()
+    transportation = models.TextField()
+    advertisement = models.TextField()
+ 
+    def __str__(self):
+        return self.use[:20]
+ 
+class CmgSecFour(models.Model):
+    section_title = models.CharField(max_length=255, null=True, blank=True)
+    cmg_sec_four_list = models.ManyToManyField(CmgSecFourList, related_name='cmg_sec_four_list')
+ 
+    def __str__(self):
+        return ', '.join([item.use[:20] for item in self.cmg_sec_four_list.all()])
+ 
+ 
+ 
+class CmgSubPage(models.Model):
+    section_title = models.CharField(max_length=255)
+    desc = models.TextField()
+    lp_title = models.CharField(max_length=255)
+    desc = models.TextField()
+    url_string = models.CharField(max_length=255)
+    img = models.ImageField(upload_to='images/')
+    cmg_sec_one = models.ForeignKey(CmgSecOne, on_delete=models.CASCADE, related_name='cmg_sec_one')
+    cmg_sec_two = models.ForeignKey(CmgSecTwo, on_delete=models.CASCADE, related_name='cmg_sec_two')
+    cmg_sec_three = models.ForeignKey(CmgSecThree, on_delete=models.CASCADE, related_name='cmg_sec_three')
+    cmg_sec_four = models.ForeignKey(CmgSecFour, on_delete=models.CASCADE, related_name='cmg_sec_four', blank = True, null=True)
+    CmgMetaTags = models.ForeignKey(CmgClientsMeta, on_delete=models.CASCADE, related_name='cmg_meta_tags')
+ 
+    def __str__(self):
+        return self.section_title
+
+
+
+class NavCtg(models.Model):
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    url = models.CharField(max_length=200, blank=True, null=True)
+    
+    def __str__(self):
+        return self.title_text
+
+
+class Nav(models.Model):
+    title_text = models.CharField(max_length=200)
+    subtext = models.CharField(max_length=100)
+    url_string = models.CharField(max_length=100, null=True, blank=True)
+    nav_ctg = models.ForeignKey(NavCtg, on_delete=models.CASCADE, related_name='navs')
+    
+    def __str__(self):
+        return self.title_text
+
+
+
+class Search(models.Model):
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    url = models.CharField(max_length=200, blank=True, null=True)
+    
+    def __str__(self):
+        return self.title_text
+
+
+
+class GrcOfferingCtg(models.Model):
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    
+    def __str__(self):
+        return self.title_text
+
+
+class GrcOffering(models.Model):
+    title_text = models.CharField(max_length=200)
+    subtext = models.CharField(max_length=100, null=True, blank=True)
+    url_string = models.CharField(max_length=100, null=True, blank=True)
+    grc_offering_ctg = models.ForeignKey(GrcOfferingCtg, on_delete=models.CASCADE, related_name='grc_offering')
+    
+    def __str__(self):
+        return self.title_text
+
+
+
+
+
+

@@ -69,5 +69,10 @@ urlpatterns = [
     path('BlogCatg_api', views.BlogCatg_api, name='BlogCatg_api'),
     path('Blog_api/<int:id>/', views.Blog_detail_api, name='Blog_detail_api'),
     path('CustomerFeedbackForm_api', views.CustomerFeedbackForm_api, name='CustomerFeedbackForm_api'),
- 
+    path('CmgSubPage_api', views.CmgSubPage_api, name='CmgSubPage_api'),
+    path('Nav_api', views.Nav_api, name='Nav_api'),
+    path('NavCatg_api', views.NavCatg_api, name='NavCatg_api'),
+    path('Search_api', views.Search_api, name='Search_api'),
+    path('GrcOffering_api', views.GrcOffering_api, name='GrcOffering_api'),
+    path('GrcOfferingCtg_api', views.GrcOfferingCtg_api, name='GrcOfferingCtg_api'),
 ]

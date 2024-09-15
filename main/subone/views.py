@@ -570,3 +570,47 @@ def CustomerFeedbackForm_api(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def CmgSubPage_api(request):
+    data = CmgSubPage.objects.all()
+    serializer = CmgSubPageSerializer(data, many=True)
+    return Response(serializer.data)  
+
+
+@api_view(['GET'])
+def Nav_api(request):
+    blogs = Nav.objects.all()
+    serializer = NavSerializer(blogs, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def NavCatg_api(request):
+    blogctg = NavCtg.objects.all()
+    serializer = NavCtgSerializer(blogctg, many=True)
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def Search_api(request):
+    search = Search.objects.all()
+    serializer = SearchSerializer(search, many=True)
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def GrcOffering_api(request):
+    grc = GrcOffering.objects.all()
+    serializer = GrcOfferingSerializer(grc, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def GrcOfferingCtg_api(request):
+    grcctg = GrcOfferingCtg.objects.all()
+    serializer = GrcOfferingCtgSerializer(grcctg, many=True)
+    return Response(serializer.data)

@@ -1726,3 +1726,102 @@ class CustomerFeedbackFormSerializer(ModelSerializer):
     class Meta:
         model = CustomerFeedbackForm
         fields = '__all__'
+
+
+
+class CmgMetaTagsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CmgClientsMeta
+        fields = '__all__'
+ 
+class cmgSecOneListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CmgSecOneList
+        fields = '__all__'
+ 
+class cmgSecOneSerializer(serializers.ModelSerializer):
+    cmg_sec_one_list = cmgSecOneListSerializer(many=True, read_only=True)
+ 
+    class Meta:
+        model = CmgSecOne
+        fields = '__all__'
+ 
+class cmgSecTwoListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CmgSecTwoList
+        fields = '__all__'
+ 
+class cmgSecTwoSerializer(serializers.ModelSerializer):
+    cmg_sec_two_list = cmgSecTwoListSerializer(many=True, read_only=True)
+ 
+    class Meta:
+        model = CmgSecTwo
+        fields = '__all__'
+ 
+class cmgSecThreeListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CmgSecThreeList
+        fields = '__all__'
+ 
+class cmgSecThreeSerializer(serializers.ModelSerializer):
+    cmg_sec_three_list = cmgSecThreeListSerializer(many=True, read_only=True)
+ 
+    class Meta:
+        model = CmgSecThree
+        fields = '__all__'
+ 
+class cmgSecFourListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CmgSecFourList
+        fields = '__all__'
+ 
+class cmgSecFourSerializer(serializers.ModelSerializer):
+    cmg_sec_four_list = cmgSecFourListSerializer(many=True, read_only=True)
+ 
+    class Meta:
+        model = CmgSecFour
+        fields = '__all__'
+ 
+class CmgSubPageSerializer(serializers.ModelSerializer):
+    cmg_sec_one = cmgSecOneSerializer(read_only=True)
+    cmg_sec_two = cmgSecTwoSerializer(read_only=True)
+    cmg_sec_three = cmgSecThreeSerializer(read_only=True)
+    cmg_sec_four = cmgSecFourSerializer(read_only=True)
+    CmgMetaTags = CmgMetaTagsSerializer(read_only=True)
+ 
+    class Meta:
+        model = CmgSubPage
+        fields = '__all__'
+
+
+class NavCtgSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NavCtg
+        fields = '__all__'
+
+class NavSerializer(serializers.ModelSerializer):
+    nav_ctg = NavCtgSerializer(read_only=True) 
+
+    class Meta:
+        model = Nav
+        fields = '__all__'
+
+
+class SearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Search
+        fields = '__all__'
+
+
+
+class GrcOfferingCtgSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GrcOfferingCtg
+        fields = '__all__'
+
+class GrcOfferingSerializer(serializers.ModelSerializer):
+    grc_offering_ctg = GrcOfferingCtgSerializer(read_only=True) 
+
+    class Meta:
+        model = GrcOffering
+        fields = '__all__'

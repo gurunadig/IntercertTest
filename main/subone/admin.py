@@ -286,3 +286,29 @@ admin.site.register(BlogSecFour, ImportExportAdmin)
 admin.site.register(BlogSecFourList, ImportExportAdmin)
 admin.site.register(Blog, ImportExportAdmin)
 admin.site.register(BlogCtg, ImportExportAdmin)
+
+
+
+admin.site.register(CmgClientsMeta,ImportExportAdmin)
+admin.site.register(CmgSubPage,ImportExportAdmin)
+admin.site.register(CmgSecOne,ImportExportAdmin)
+admin.site.register(CmgSecOneList,ImportExportAdmin)
+admin.site.register(CmgSecTwo,ImportExportAdmin)
+admin.site.register(CmgSecTwoList,ImportExportAdmin)
+admin.site.register(CmgSecThree,ImportExportAdmin)
+admin.site.register(CmgSecThreeList,ImportExportAdmin)
+admin.site.register(CmgSecFour,ImportExportAdmin)
+admin.site.register(CmgSecFourList,ImportExportAdmin)
+
+
+
+admin.site.register(NavCtg,ImportExportAdmin)
+admin.site.register(Nav,ImportExportAdmin)
+
+
+
+admin.site.register(Search,ImportExportAdmin)
+
+
+admin.site.register(GrcOfferingCtg,ImportExportAdmin)
+admin.site.register(GrcOffering,ImportExportAdmin)

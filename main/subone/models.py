@@ -82,9 +82,19 @@ class ServiceCarousel(models.Model):
     def __str__(self):
         return self.title
 
+
+class IndustryWeServeList(models.Model):
+    title = models.TextField(null=True, blank=True)
+    desc = models.TextField(null=True, blank=True)
+    url = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
 class IndustryWeServe(models.Model):
     image = models.ImageField(default="400-200.png", null=False, blank=True)
     title = models.TextField()
+    industry_lists = models.ManyToManyField(IndustryWeServeList, related_name='industry_lists', null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -103,6 +113,7 @@ class ApproachStep(models.Model):
 class Certification(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(default="400-200.png", null=False, blank=True)
+    tagline = models.CharField(max_length=255, null=True, blank=True)
     description = models.TextField()
 
     def __str__(self):
@@ -668,7 +679,7 @@ class GrcSecEightList(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     img = models.ImageField(upload_to='images/')
-    url = models.URLField(max_length=255)
+    url = models.TextField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -816,7 +827,7 @@ class ManagementTrnSecSevenList(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     img = models.ImageField(upload_to='images/')
-    url = models.URLField(max_length=255)
+    url = models.CharField(max_length=255, blank=True, null=True)
 
 
 class ManagementTrnSecSeven(models.Model):
@@ -982,7 +993,7 @@ class ProfessionalTrnSecSevenList(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     img = models.ImageField(upload_to='images/')
-    url = models.URLField(max_length=255)
+    url = models.CharField(max_length=255, blank=True, null=True)
 
 
 class ProfessionalTrnSecSeven(models.Model):
@@ -1119,7 +1130,7 @@ class AuditSecSevenList(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     img = models.ImageField(upload_to='images/')
-    url = models.URLField(max_length=255)
+    url = models.CharField(max_length=255, blank=True, null=True)
 
 
 class AuditSecSeven(models.Model):
@@ -1255,7 +1266,7 @@ class StcSecEightList(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     img = models.ImageField(upload_to='images/')
-    url = models.URLField(max_length=255)
+    url = models.CharField(max_length=255, null=True, blank=True)
  
  
 class StcSecEight(models.Model):

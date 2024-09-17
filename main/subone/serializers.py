@@ -56,7 +56,17 @@ class ServiceCarouselSerializer(serializers.ModelSerializer):
         model = ServiceCarousel
         fields = '__all__'
 
+
+
+class IndustryWeServeListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IndustryWeServeList
+        fields = '__all__'
+
+
 class IndustryWeServeSerializer(serializers.ModelSerializer):
+    industry_lists = IndustryWeServeListSerializer(many=True, read_only=True)
+
     class Meta:
         model = IndustryWeServe
         fields = '__all__'

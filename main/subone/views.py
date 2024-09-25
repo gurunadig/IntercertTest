@@ -510,6 +510,22 @@ def ContactForm_api(request):
             return Response(serializer.data)
 
 
+
+# Post Method
+@api_view(['GET','POST'])
+def MainContactForm_api(request):
+    if request.method == "GET":
+        formdata = MainContactForm.objects.all()
+        serializer = MainContactFormSerializer(formdata, many=True)
+        return Response(serializer.data)
+
+    elif request.method == "POST":
+        serializer = MainContactFormSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+
 # Post Method
 @api_view(['GET','POST'])
 def CareerForm_api(request):
@@ -613,4 +629,71 @@ def GrcOffering_api(request):
 def GrcOfferingCtg_api(request):
     grcctg = GrcOfferingCtg.objects.all()
     serializer = GrcOfferingCtgSerializer(grcctg, many=True)
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def SuspendedClientBanner_api(request):
+    suspendedBanners = SuspendedClientBanner.objects.all()
+    serializer = SuspendedClientBannerSerializer(suspendedBanners, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def CertificationProcessBanner_api(request):
+    certificationBanners = CertificationProcessBanner.objects.all()
+    serializer = CertificationProcessBannerSerializer(certificationBanners, many=True)
+    return Response(serializer.data)
+
+
+    
+@api_view(['GET'])
+def CertificationGuidlineBanner_api(request):
+    certificationGuidlineBanners = CertificationGuidlineBanner.objects.all()
+    serializer = CertificationGuidlineBannerSerializer(certificationGuidlineBanners, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def AppealHandlingBanner_api(request):
+    appealBanner = AppealHandlingBanner.objects.all()
+    serializer = AppealHandlingBannerSerializer(appealBanner, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def GrievancesBanner_api(request):
+    grievnacesBanner = GrievancesBanner.objects.all()
+    serializer = GrievancesBannerSerializer(grievnacesBanner, many=True)
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def ComplaintHandlingProcessBanner_api(request):
+    CompliantHandlingBanner = ComplaintHandlingProcessBanner.objects.all()
+    serializer = ComplaintHandlingProcessBannerSerializer(CompliantHandlingBanner, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def CustomerFeedbackBanner_api(request):
+    customerFeedbackBanner = CustomerFeedbackBanner.objects.all()
+    serializer = CustomerFeedbackBannerSerializer(customerFeedbackBanner, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def CertificationVerificationBanner_api(request):
+    verficationBanner = CertificationVerificationBanner.objects.all()
+    serializer = CertificationVerificationBannerSerializer(verficationBanner, many=True)
+    return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def ProfessionalList_api(request):
+    p_list = ProfessionalTrnSecOne.objects.all()
+    serializer = ProfessionalTrnSecOneSerializer(p_list, many=True)
     return Response(serializer.data)

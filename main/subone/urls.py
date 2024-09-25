@@ -63,6 +63,7 @@ urlpatterns = [
     path('StcMainPage_api', views.StcMainPage_api, name='StcMainPage_api'),
     path('CareerForm_api', views.CareerForm_api, name='CareerForm_api'),
     path('ContactForm_api', views.ContactForm_api, name='ContactForm_api'),
+    path('MainContactForm_api', views.MainContactForm_api, name='MainContactForm_api'),
     path('CareerPagePage_api', views.CareerPagePage_api, name='CareerPagePage_api'),
     path('PrivacyPolicyPage_api', views.PrivacyPolicyPage_api, name='PrivacyPolicyPage_api'),
     path('Blog_api', views.Blog_api, name='Blog_api'),
@@ -75,4 +76,16 @@ urlpatterns = [
     path('Search_api', views.Search_api, name='Search_api'),
     path('GrcOffering_api', views.GrcOffering_api, name='GrcOffering_api'),
     path('GrcOfferingCtg_api', views.GrcOfferingCtg_api, name='GrcOfferingCtg_api'),
+
+
+
+    path('SuspendedClientBanner_api', views.SuspendedClientBanner_api, name='SuspendedClientBanner_api'),
+    path('CertificationProcessBanner_api', views.CertificationProcessBanner_api, name='CertificationProcessBanner_api'),
+    path('CertificationGuidlineBanner_api', views.CertificationGuidlineBanner_api, name='CertificationGuidlineBanner_api'),
+    path('AppealHandlingBanner_api', views.AppealHandlingBanner_api, name='AppealHandlingBanner_api'),
+    path('GrievancesBanner_api', views.GrievancesBanner_api, name='GrievancesBanner_api'),
+    path('ComplaintHandlingProcessBanner_api', views.ComplaintHandlingProcessBanner_api, name='ComplaintHandlingProcessBanner_api'),
+    path('CustomerFeedbackBanner_api', views.CustomerFeedbackBanner_api, name='CustomerFeedbackBanner_api'),
+    path('CertificationVerificationBanner_api', views.CertificationVerificationBanner_api, name='CertificationVerificationBanner_api'),
+    path('ProfessionalList_api', views.ProfessionalList_api, name='ProfessionalList_api'),
 ]

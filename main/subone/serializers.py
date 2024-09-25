@@ -1551,6 +1551,12 @@ class ContactFormSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class MainContactFormSerializer(ModelSerializer):
+    class Meta:
+        model = MainContactForm
+        fields = '__all__'
+
+
 class CareerFormSerializer(ModelSerializer):
     class Meta:
         model = CareerForm
@@ -1756,13 +1762,19 @@ class cmgSecOneSerializer(serializers.ModelSerializer):
         model = CmgSecOne
         fields = '__all__'
  
-class cmgSecTwoListSerializer(serializers.ModelSerializer):
+class cmgSecTwoListSecOneSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CmgSecTwoList
+        model = CmgSecTwoListSecOne
+        fields = '__all__'
+
+class cmgSecTwoListSecTwoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CmgSecTwoListSecTwo
         fields = '__all__'
  
 class cmgSecTwoSerializer(serializers.ModelSerializer):
-    cmg_sec_two_list = cmgSecTwoListSerializer(many=True, read_only=True)
+    cmg_sec_two_list_sec_one = cmgSecTwoListSecOneSerializer(many=True, read_only=True)
+    cmg_sec_two_list_sec_two = cmgSecTwoListSecTwoSerializer(many=True, read_only=True)
  
     class Meta:
         model = CmgSecTwo
@@ -1835,3 +1847,55 @@ class GrcOfferingSerializer(serializers.ModelSerializer):
     class Meta:
         model = GrcOffering
         fields = '__all__'
+
+
+class SuspendedClientBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SuspendedClientBanner
+        fields = '__all__'
+
+
+class CertificationProcessBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CertificationProcessBanner
+        fields = '__all__'
+
+
+class CertificationGuidlineBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CertificationGuidlineBanner
+        fields = '__all__'
+
+
+class AppealHandlingBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppealHandlingBanner
+        fields = '__all__'
+
+
+class GrievancesBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GrievancesBanner
+        fields = '__all__'
+
+
+class ComplaintHandlingProcessBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ComplaintHandlingProcessBanner
+        fields = '__all__'
+
+
+class CustomerFeedbackBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomerFeedbackBanner
+        fields = '__all__'
+
+
+class CertificationVerificationBannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CertificationVerificationBanner
+        fields = '__all__'
+
+
+
+

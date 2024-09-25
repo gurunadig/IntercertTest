@@ -295,7 +295,8 @@ admin.site.register(CmgSubPage,ImportExportAdmin)
 admin.site.register(CmgSecOne,ImportExportAdmin)
 admin.site.register(CmgSecOneList,ImportExportAdmin)
 admin.site.register(CmgSecTwo,ImportExportAdmin)
-admin.site.register(CmgSecTwoList,ImportExportAdmin)
+admin.site.register(CmgSecTwoListSecOne,ImportExportAdmin)
+admin.site.register(CmgSecTwoListSecTwo,ImportExportAdmin)
 admin.site.register(CmgSecThree,ImportExportAdmin)
 admin.site.register(CmgSecThreeList,ImportExportAdmin)
 admin.site.register(CmgSecFour,ImportExportAdmin)
@@ -313,3 +314,15 @@ admin.site.register(Search,ImportExportAdmin)
 
 admin.site.register(GrcOfferingCtg,ImportExportAdmin)
 admin.site.register(GrcOffering,ImportExportAdmin)
+
+
+
+
+admin.site.register(SuspendedClientBanner,ImportExportAdmin)
+admin.site.register(CertificationProcessBanner,ImportExportAdmin)
+admin.site.register(CertificationGuidlineBanner,ImportExportAdmin)
+admin.site.register(AppealHandlingBanner,ImportExportAdmin)
+admin.site.register(GrievancesBanner,ImportExportAdmin)
+admin.site.register(ComplaintHandlingProcessBanner,ImportExportAdmin)
+admin.site.register(CustomerFeedbackBanner,ImportExportAdmin)
+admin.site.register(CertificationVerificationBanner,ImportExportAdmin)

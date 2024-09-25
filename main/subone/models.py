@@ -161,7 +161,8 @@ class AboutUsMeta(models.Model):
 class WhoWeAre(models.Model):
     sec_title = models.TextField()
     sub_text = models.TextField()
-    desc = models.TextField()
+    desc1 = models.TextField(blank=True, null=True)
+    desc2 = models.TextField(blank=True, null=True)
 
 class WWRList(models.Model):
     who_we_are = models.ForeignKey(WhoWeAre, related_name='wwr_list', on_delete=models.CASCADE)
@@ -1922,6 +1923,18 @@ class ContactForm(models.Model):
         return self.f_name
 
 
+class MainContactForm(models.Model):
+    f_name = models.CharField(max_length=100, blank=False, null=False)
+    l_name = models.CharField(max_length=100, blank=False, null=False)
+    phone =  models.PositiveIntegerField(blank=False, null=False)
+    service = models.CharField(max_length=100, blank=False, null=False)
+    email =  models.EmailField(max_length=200, blank=False, null=False)
+    message =  models.TextField( blank=False, null=False)
+    
+    def __str__(self):
+        return self.f_name
+
+
 class CareerForm(models.Model):
     file= models.FileField(upload_to= 'uploads/', blank=False, null=False)
     first_name = models.CharField(max_length=100, blank=False, null=False)
@@ -2187,13 +2200,13 @@ class CustomerFeedbackForm(models.Model):
     address =  models.TextField(blank=True, null=True)
     email =  models.EmailField(max_length=255, blank=True, null=True)
     phone =  models.PositiveIntegerField(blank=True, null=True)
-    date =  models.DateField(blank=True, null=True)
-    audit_standard =  models.CharField(max_length=255, blank=True, null=True)
-    company_activities = models.CharField(max_length=255,blank=True, null=True)
-    audit_type = models.CharField(max_length=255, blank=True, null=True)
-    lead_auditor_name = models.CharField(max_length=255, blank=True, null=True)
-    other_audit_team_name = models.CharField(max_length=255, blank=True, null=True)
-    feedback_audit_team = models.TextField(blank=True, null=True)
+    assessment_date =  models.DateField(blank=True, null=True)
+    assessment_standard =  models.CharField(max_length=255, blank=True, null=True)
+    business_activities = models.CharField(max_length=255,blank=True, null=True)
+    assessment_type = models.CharField(max_length=255, blank=True, null=True)
+    lead_assessor_name = models.CharField(max_length=255, blank=True, null=True)
+    assessment_team_members = models.CharField(max_length=255, blank=True, null=True)
+    feedback_assessment_team = models.TextField(blank=True, null=True)
     feedback_for_intercert = models.TextField(blank=True, null=True)
     remarks = models.TextField(blank=True, null=True)
    
@@ -2240,18 +2253,28 @@ class CmgSecOne(models.Model):
     def __str__(self):
         return self.section_title
  
-class CmgSecTwoList(models.Model):
-    title = models.CharField(max_length=255)
-    desc = models.TextField()
+class CmgSecTwoListSecOne(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+    img = models.ImageField(upload_to='images/', blank=True, null=True)
+    desc = models.TextField(blank=True, null=True)
+ 
+    def __str__(self):
+        return self.title
+
+class CmgSecTwoListSecTwo(models.Model):
+    title = models.CharField(max_length=255, blank=True, null=True)
+    img = models.ImageField(upload_to='images/', blank=True, null=True)
+    desc = models.TextField(blank=True, null=True)
  
     def __str__(self):
         return self.title
  
 class CmgSecTwo(models.Model):
-    img = models.ImageField(upload_to='images/')
+    img = models.ImageField(upload_to='images/', blank=True, null=True)
     section_title = models.CharField(max_length=255)
     desc = models.TextField(blank=True, null=True)
-    cmg_sec_two_list = models.ManyToManyField(CmgSecTwoList, related_name='cmg_sec_two_list', blank=True, null=True)
+    cmg_sec_two_list_sec_one = models.ManyToManyField(CmgSecTwoListSecOne, related_name='cmg_sec_two_list_sec_one', blank=True, null=True)
+    cmg_sec_two_list_sec_two = models.ManyToManyField(CmgSecTwoListSecTwo, related_name='cmg_sec_two_list_sec_two', blank=True, null=True)
  
     def __str__(self):
         return self.section_title
@@ -2356,5 +2379,78 @@ class GrcOffering(models.Model):
 
 
 
+class SuspendedClientBanner(models.Model):
+    img = models.ImageField(upload_to='images/')
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
 
+    def __str__(self):
+        return self.title_text
+
+
+class CertificationProcessBanner(models.Model):
+    img = models.ImageField(upload_to='images/')
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+
+    def __str__(self):
+        return self.title_text
+
+
+class CertificationGuidlineBanner(models.Model):
+    img = models.ImageField(upload_to='images/')
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+
+    def __str__(self):
+        return self.title_text
+
+
+class AppealHandlingBanner(models.Model):
+    img = models.ImageField(upload_to='images/')
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+    
+
+    def __str__(self):
+        return self.title_text
+
+
+class GrievancesBanner(models.Model):
+    img = models.ImageField(upload_to='images/')
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.title_text
+
+
+class ComplaintHandlingProcessBanner(models.Model):
+    img = models.ImageField(upload_to='images/')
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.title_text
+
+
+class CustomerFeedbackBanner(models.Model):
+    img = models.ImageField(upload_to='images/')
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.title_text
+
+
+class CertificationVerificationBanner(models.Model):
+    img = models.ImageField(upload_to='images/')
+    title_text = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+
+    def __str__(self):
+        return self.title_text
 

@@ -543,8 +543,9 @@ class GrcMetaTag(models.Model):
         return self.title
 
 class GrcSecOneList(models.Model):
-    title = models.TextField()
+    title = models.TextField(blank=True, null=True)
     desc = models.TextField()
+    paragraph = models.TextField(blank=True, null=True)
     imgfield = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
@@ -965,14 +966,14 @@ class ProfessionalTrnSecFiveCategory(models.Model):
         return self.title
  
 class ProfessionalTrnSecFive(models.Model):
-    section_title = models.TextField()
+    section_title = models.TextField(blank=True, null=True)
     sub_text = models.CharField(max_length=255, blank=True, null=True)
     desc = models.TextField()
     level_heading = models.CharField(max_length=255, blank=True, null=True)
     prf_trn_sec_five_category = models.ManyToManyField(ProfessionalTrnSecFiveCategory, related_name='prf_trn_sec_five_category')
  
     def __str__(self):
-        return self.section_title
+        return self.desc[:20]
  
 class ProfessionalTrnSecSixList(models.Model):
     list_text = models.TextField()
@@ -1366,7 +1367,7 @@ class GrcMainSecThreeList(models.Model):
 
 class GrcMainSecThree(models.Model):
     section_title = models.TextField()
-    desc = models.TextField()
+    desc = models.TextField(blank=True, null=True)
     img = models.ImageField(upload_to='images/', null=True, blank=True)
     grcmain_sec_three_list = models.ManyToManyField(GrcMainSecThreeList, related_name='grcmain_sec_three_list')
 
@@ -1539,10 +1540,12 @@ class TrnMainSecTwo(models.Model):
     desc = models.TextField()
     trnmain_sec_two_list = models.ManyToManyField(TrnMainSecTwoList, related_name='trnmain_sec_two_list')
 
+class TrnMainSecThreeListList(models.Model):
+    list_text = models.TextField()
 
 class TrnMainSecThreeList(models.Model):
     list_title = models.TextField()
-    list_text = models.TextField()
+    trnmain_sec_two_list_list = models.ManyToManyField(TrnMainSecThreeListList, related_name='trnmain_sec_two_list_list')
 
 
 class TrnMainSecThree(models.Model):

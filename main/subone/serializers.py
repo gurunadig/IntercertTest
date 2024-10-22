@@ -1208,9 +1208,14 @@ class TrnMainSecThreeListListSerializer(serializers.ModelSerializer):
         model = TrnMainSecThreeListList
         fields = '__all__'
 
+class TrnMainSecThreeListListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TrnMainSecThreeListList
+        fields = '__all__'
+
 
 class TrnMainSecThreeListSerializer(serializers.ModelSerializer):
-    trnmain_sec_two_list_list = TrnMainSecThreeListListSerializer(many=True, read_only=True)
+    trnmain_sec_three_list_list = TrnMainSecThreeListListSerializer(many=True, read_only=True)
     class Meta:
         model = TrnMainSecThreeList
         fields = '__all__'

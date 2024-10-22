@@ -1001,6 +1001,8 @@ class ProfessionalTrnSecSevenList(models.Model):
     img = models.ImageField(upload_to='images/')
     url = models.CharField(max_length=255, blank=True, null=True)
 
+    def __str__(self):
+        return self.title
 
 class ProfessionalTrnSecSeven(models.Model):
     section_title = models.TextField()
@@ -1009,7 +1011,8 @@ class ProfessionalTrnSecSeven(models.Model):
     img = models.ImageField(upload_to='images/', null=True, blank=True)
     prf_trn_sec_seven_list = models.ManyToManyField(ProfessionalTrnSecSevenList, related_name='prf_trn_sec_seven_list')
 
-   
+    def __str__(self):
+        return self.section_title
  
 class ProfessionalTrnSubPage(models.Model):
     section_title = models.CharField(max_length=255)
@@ -1206,6 +1209,8 @@ class StcSecTwo(models.Model):
     desc = models.TextField()
     img = models.ImageField(upload_to='images/', null=True, blank=True)
     stc_sec_two_list = models.ManyToManyField(StcSecTwoList, related_name='stc_sec_two_list')
+
+
  
  
 class StcSecThreeList(models.Model):

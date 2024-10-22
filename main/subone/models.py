@@ -544,7 +544,9 @@ class GrcMetaTag(models.Model):
 
 class GrcSecOneList(models.Model):
     title = models.TextField(blank=True, null=True)
+    title = models.TextField(blank=True, null=True)
     desc = models.TextField()
+    paragraph = models.TextField(blank=True, null=True)
     paragraph = models.TextField(blank=True, null=True)
     imgfield = models.ImageField(upload_to='images/', null=True, blank=True)
 
@@ -967,12 +969,14 @@ class ProfessionalTrnSecFiveCategory(models.Model):
  
 class ProfessionalTrnSecFive(models.Model):
     section_title = models.TextField(blank=True, null=True)
+    section_title = models.TextField(blank=True, null=True)
     sub_text = models.CharField(max_length=255, blank=True, null=True)
     desc = models.TextField()
     level_heading = models.CharField(max_length=255, blank=True, null=True)
     prf_trn_sec_five_category = models.ManyToManyField(ProfessionalTrnSecFiveCategory, related_name='prf_trn_sec_five_category')
  
     def __str__(self):
+        return self.desc[:20]
         return self.desc[:20]
  
 class ProfessionalTrnSecSixList(models.Model):
@@ -1367,6 +1371,7 @@ class GrcMainSecThreeList(models.Model):
 
 class GrcMainSecThree(models.Model):
     section_title = models.TextField()
+    desc = models.TextField(blank=True, null=True)
     desc = models.TextField(blank=True, null=True)
     img = models.ImageField(upload_to='images/', null=True, blank=True)
     grcmain_sec_three_list = models.ManyToManyField(GrcMainSecThreeList, related_name='grcmain_sec_three_list')

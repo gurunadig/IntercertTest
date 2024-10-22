@@ -858,9 +858,7 @@ class ManagementTrnSubPage(models.Model):
     trn_sec_six = models.ForeignKey(ManagementTrnSecSix, on_delete=models.CASCADE, related_name='trn_sec_six', blank=True, null=True)
     trn_sec_seven = models.ForeignKey(ManagementTrnSecSeven, on_delete=models.CASCADE, related_name='trn_sec_seven', blank=True, null=True)
     trn_meta = models.ForeignKey(ManagementTrnMetaTag, on_delete=models.CASCADE, related_name='trn_meta', blank=True, null=True)
-
-    def __str__(self):
-        return self.section_title
+    
 
 # Management Training model Ends
 
@@ -1060,15 +1058,10 @@ class AuditMetaTag(models.Model):
     twitter_description = models.TextField()
     twitter_image = models.ImageField(upload_to='images/')
 
-    def __str__(self):
-        return self.title
 
 class AuditSecOneList(models.Model):
     list_title = models.TextField()
     list_text = models.TextField()
-
-    def __str__(self):
-        return self.list_title
 
 
 class AuditSecOne(models.Model):
@@ -1076,30 +1069,20 @@ class AuditSecOne(models.Model):
     desc = models.TextField()
     audit_sec_one_list = models.ManyToManyField(AuditSecOneList, related_name='audit_sec_one_list')
 
-    def __str__(self):
-        return self.section_title
-
 
 class AuditSecTwoList(models.Model):
     list_title = models.TextField(blank=True, null=True)
     list_text = models.TextField()
 
-    def __str__(self):
-        return self.list_title
 
 class AuditSecTwo(models.Model):
     section_title = models.TextField()
     desc = models.TextField()
     audit_sec_two_list = models.ManyToManyField(AuditSecTwoList, related_name='audit_sec_two_list')
 
-    def __str__(self):
-        return self.section_title
 
 class AuditSecThreeList(models.Model):
     list_text = models.TextField()
-
-    def __str__(self):
-        return self.list_text
 
 
 class AuditSecThree(models.Model):
@@ -1109,15 +1092,11 @@ class AuditSecThree(models.Model):
     list_tile = models.TextField(blank=True, null=True)
     audit_sec_three_list = models.ManyToManyField(AuditSecThreeList, related_name='audit_sec_three_list')
 
-    def __str__(self):
-        return self.section_title
 
 
 class AuditSecFourList(models.Model):
     list_text = models.TextField()
 
-    def __str__(self):
-        return self.list_text
 
 class AuditSecFour(models.Model):
     section_title = models.TextField()
@@ -1126,17 +1105,12 @@ class AuditSecFour(models.Model):
     list_tile = models.TextField(blank=True, null=True)
     audit_sec_four_list = models.ManyToManyField(AuditSecFourList, related_name='audit_sec_four_list')
 
-    def __str__(self):
-        return self.section_title
 
 class AuditSecFiveList(models.Model):
     list_text = models.TextField()
     img = models.ImageField(upload_to='images/', null=True, blank=True)
     desc = models.TextField()
     url = models.TextField()
-
-    def __str__(self):
-        return self.list_text
 
 
 class AuditSecFive(models.Model):
@@ -1146,15 +1120,9 @@ class AuditSecFive(models.Model):
     list_tile = models.TextField(blank=True, null=True)
     audit_sec_five_list = models.ManyToManyField(AuditSecFiveList, related_name='audit_sec_five_list')
 
-    def __str__(self):
-        return self.section_title
-
 
 class AuditSecSixList(models.Model):
     list_text = models.TextField()
-
-    def __str__(self):
-        return self.list_text
 
 
 class AuditSecSix(models.Model):
@@ -1163,18 +1131,12 @@ class AuditSecSix(models.Model):
     img = models.ImageField(upload_to='images/', null=True, blank=True)
     audit_sec_six_list = models.ManyToManyField(AuditSecSixList, related_name='audit_sec_seven_list')
 
-    def __str__(self):
-        return self.section_title
-
 
 class AuditSecSevenList(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     img = models.ImageField(upload_to='images/')
     url = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return self.title
 
 
 class AuditSecSeven(models.Model):
@@ -1201,8 +1163,6 @@ class AuditSubPage(models.Model):
     audit_sec_seven = models.ForeignKey(AuditSecSeven, on_delete=models.CASCADE, related_name='audit_sec_seven', blank=True, null=True)
     audit_meta = models.ForeignKey(AuditMetaTag, on_delete=models.CASCADE, related_name='audit_meta', blank=True, null=True)
     
-    def __str__(self):
-        return self.section_title
 #Audit Model Ends
 
 
